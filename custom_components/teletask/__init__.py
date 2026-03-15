@@ -1,4 +1,5 @@
 """Connects to Teletask platform."""
+import asyncio
 import logging
 
 import voluptuous as vol
@@ -87,7 +88,7 @@ class TeletaskModule:
         """Initialize of TELETASK object."""
         from teletask import Teletask
 
-        self.teletask = Teletask(config=None, loop=self.hass.loop)
+        self.teletask = Teletask(config=None, loop=asyncio.get_event_loop())
 
     async def start(self):
         """Start TELETASK object. Connect to device."""
